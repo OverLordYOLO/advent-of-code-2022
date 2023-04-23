@@ -16,13 +16,14 @@ def parseLines(lines):
         if line == "":
             elfs.append([sum, elf])
             sum = 0
+            elf = []
         else:
             elf.append(line)
             sum += line
     return elfs
 
 def findMaxElfIndex(elfs):
-    maxIndex = []
+    maxIndex = 0
     maxVal = 0
     for i, elf in enumerate(elfs):
         if elf[0] > maxVal:
@@ -31,7 +32,7 @@ def findMaxElfIndex(elfs):
 
     return maxIndex
 
-def main():
+def find_max():
     lines = loadLines()
     elfs = parseLines(lines)
     maxElfIndex = findMaxElfIndex(elfs)
@@ -40,4 +41,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    find_max()
