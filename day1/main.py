@@ -12,10 +12,12 @@ def parseLines(lines):
     elfs = []
     elf = []
     sum = 0
+    i = 0
     for line in lines:
         if line == "":
-            elfs.append([sum, elf])
+            elfs.append([sum, elf, i])
             sum = 0
+            i = i + 1
             elf = []
         else:
             elf.append(line)
@@ -38,7 +40,25 @@ def find_max():
     maxElfIndex = findMaxElfIndex(elfs)
     print(f"elf n#:{maxElfIndex+1}; maxValue: {elfs[maxElfIndex][0]}")
     
+def findMaxElfIndexes(elfs, returnNumber):
+    sortedElfs = sorted(elfs, key=lambda x: x[0], reverse=True)
+    indexes = []
+    unsortedIndex = 2
+    for i in range(returnNumber):
+        indexes.append(sortedElfs[i][unsortedIndex])
+    return indexes
+
+def find_max(returnNumber):
+    lines = loadLines()
+    elfs = parseLines(lines)
+    maxElfIndexes = findMaxElfIndexes(elfs, 3)
+    sumCal = 0
+    for i in maxElfIndexes:
+        sumCal += elfs[i][0]
+        print(f"elf n#:{i+1}; maxValue: {elfs[i][0]}")
+    print(f"Sum: {sumCal}")
 
 
 if __name__ == "__main__":
-    find_max()
+    #find_max()
+    find_max(3)
