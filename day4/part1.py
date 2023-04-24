@@ -32,7 +32,6 @@ def calculateFullyContained(pairs):
     for pair in pairs:
         #if set(range(pair[0], pair[1])).issubset(range(pair[2], pair[3]))
         if (pair[0] <= pair[2] and pair[1] >= pair[3]) or (pair[2] <= pair[0] and pair[3] >= pair[1]):
-            print(pair)
             count += 1
     return count
 
